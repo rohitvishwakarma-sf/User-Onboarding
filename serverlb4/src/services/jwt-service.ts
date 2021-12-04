@@ -51,7 +51,7 @@ export class JWTService {
           permissions: decryptedToken.permissions,
         },
       );
-    } catch (error) {
+    } catch (error: any) {
       throw new HttpErrors.Unauthorized(
         `Error verifying token : ${error.message}`,
       );

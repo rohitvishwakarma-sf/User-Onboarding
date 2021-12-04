@@ -58,6 +58,7 @@
     "@loopback/rest": "^10.0.0",
     "@loopback/rest-explorer": "^3.3.2",
     "@loopback/service-proxy": "^3.2.2",
+    "@sourceloop/user-onboarding-client": "file:sourceloop-user-onboarding-client-0.0.1.tgz",
     "@types/bcryptjs": "^2.4.2",
     "@types/lodash": "^4.14.172",
     "bcryptjs": "^2.4.3",

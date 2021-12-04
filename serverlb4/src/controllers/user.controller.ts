@@ -17,6 +17,7 @@ import {
   requestBody,
   response,
   getJsonSchemaRef,
+  OperationObject,
 } from '@loopback/rest';
 import {User} from '../models';
 import {Credentials, UserRepository} from '../repositories';
@@ -33,6 +34,38 @@ import {
 } from '../services/keys';
 import {authenticate} from '@loopback/authentication';
 import {PermissionKeys} from '../authorization/permission-keys';
+// import {OperationObject} from 'op'
+
+function AorB(): MethodDecorator {
+  let condition = false;
+  return condition
+    ? post('/users/signup', {
+        responses: {
+          '200': {
+            description: 'User',
+            content: {
+              schema: getJsonSchemaRef(User),
+            },
+          },
+        },
+      })
+    : (a: any, b: any) => {};
+}
+
+function sl_post(
+  path: string,
+  spec?: OperationObject | undefined,
+): MethodDecorator {
+  let condition = true;
+  return condition ? post(path, spec) : () => {};
+}
+function sl_get(
+  path: string,
+  spec?: OperationObject | undefined,
+): MethodDecorator {
+  let condition = true;
+  return condition ? get(path, spec) : () => {};
+}
 export class UserController {
   constructor(
     @repository(UserRepository)
@@ -45,7 +78,18 @@ export class UserController {
     public jwtService: JWTService,
   ) {}
 
-  @post('/users/signup', {
+  // @post('/users/signup', {
+  //   responses: {
+  //     '200': {
+  //       description: 'User',
+  //       content: {
+  //         schema: getJsonSchemaRef(User),
+  //       },
+  //     },
+  //   },
+  // })
+  // @AorB()
+  @sl_post('/users/signup', {
     responses: {
       '200': {
         description: 'User',
@@ -63,7 +107,26 @@ export class UserController {
     return {...savedUser, password: undefined};
   }
 
-  @post('/users/login', {
+  // @post('/users/login', {
+  //   responses: {
+  //     '200': {
+  //       description: 'Token',
+  //       content: {
+  //         'application/json': {
+  //           schema: {
+  //             type: 'object',
+  //             properties: {
+  //               token: {
+  //                 type: 'string',
+  //               },
+  //             },
+  //           },
+  //         },
+  //       },
+  //     },
+  //   },
+  // })
+  @sl_post('/users/login', {
     responses: {
       '200': {
         description: 'Token',

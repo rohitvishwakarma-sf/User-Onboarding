@@ -1,0 +1,26 @@
+@import "../assets/default.scss";
+.shepherd-element {
+  @include sourceloopElement(black, 5px, 500px);
+}
+
+.shepherd-button {
+  @include sourceloopButton(blue, 5px, white);
+}
+
+.shepherd-title {
+  @include sourceloopTitle(blue, 2rem, 500);
+}
+
+.shepherd-cancel-icon {
+  @include sourceloopCancelIcon(black, solid, white);
+}
+.shepherd-text {
+  @include sourceloopText(black, 1rem);
+}
+.nav-item.active {
+  background-color: rgb(136, 202, 247);
+  border-radius: 10%;
+}
+.container {
+  margin-top: 30px;
+}
